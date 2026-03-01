@@ -3,33 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your todos · To Do List</title>
+  <title>Your Todos · To Do List</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Minimal layout styling (works even without styles.css) */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .form--inline {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .field--grow {
+      flex: 1;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn--primary {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .btn--secondary {
+      background: #e0e0e0;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .todo-title {
+      font-weight: bold;
+    }
+
+    .todo-meta {
+      font-size: 0.85rem;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
+
   <div class="app">
-    <header class="header header--row">
+    <header class="header">
       <div>
         <h1 class="logo">To Do List</h1>
-        <p class="tagline" id="greeting">Your todos</p>
+        <p id="greeting">Your todos</p>
       </div>
-      <button type="button" id="logout" class="btn btn--secondary">Log out</button>
+      <button id="logout" class="btn btn--secondary">Log out</button>
     </header>
-    <main class="main">
+
+    <main>
       <section class="card">
-        <form id="todo-form" class="form form--inline">
-          <div class="field field--grow">
-            <input type="text" id="title" placeholder="New todo…" required maxlength="200" />
+
+        <!-- ADD TODO FORM -->
+        <form id="todo-form" class="form--inline">
+          <div class="field--grow">
+            <input 
+              type="text" 
+              id="title" 
+              placeholder="New todo…" 
+              required 
+              maxlength="200"
+            />
           </div>
-          <div class="field field--grow">
-            <input type="text" id="description" placeholder="Description (optional)" maxlength="500" />
+
+          <div class="field--grow">
+            <input 
+              type="text" 
+              id="description" 
+              placeholder="Description (optional)" 
+              maxlength="500"
+            />
           </div>
-          <button type="submit" class="btn btn--primary">Add</button>
+
+          <button type="submit" class="btn btn--primary">
+            Add
+          </button>
         </form>
+
+        <!-- TODO LIST -->
         <ul id="list" class="list"></ul>
+
       </section>
     </main>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>

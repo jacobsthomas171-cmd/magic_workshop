@@ -126,3 +126,15 @@ def get_users(db: Session = Depends(get_db)):
         }
         for user in users
     ]
+
+@app.delete("/todos/{todo_id}")
+def delete_todo(todo_id: uuid.UUID, db: Session = Depends(get_db)):
+
+    todo = db.query(Todo).filter(Todo.id == todo_id).first()
+    if not todo:
+        raise HTTPException(status_code=404, detail="Todo not found")
+
+    db.delete(todo)
+    db.commit()
+
+    return {"message": "Todo deleted successfully"} 
